@@ -1,0 +1,71 @@
+@use "../abstracts/" as *;
+
+.about {
+  display: grid;
+  grid: {
+    template: {
+      columns: repeat(2, 1fr);
+    }
+  }
+  position: relative;
+  @include tablet {
+    grid: {
+      template: {
+        columns: repeat(1, 1fr);
+      }
+    }
+    overflow: hidden;
+    padding: 2rem 0;
+  }
+  &__img {
+    @include tablet {
+      position: absolute;
+      opacity: 0.3;
+    }
+  }
+  &__info {
+    padding-left: 3rem;
+    position: relative;
+    &--title,
+    &--desc,
+    &--btn {
+      padding: 2rem 0;
+      @include tablet {
+        text-align: center;
+        padding: 0rem 0;
+      }
+    }
+    &--title {
+      font: {
+        size: 6rem;
+        weight: 600;
+        // line-height: 1;
+      }
+      @include tablet {
+        font: {
+          size: 4rem;
+          weight: 500;
+          // line-height: 1;
+        }
+      }
+    }
+    &--desc {
+      font: {
+        size: 1.2rem;
+        weight: bold;
+      }
+      @include tablet {
+        font: {
+          size: 1.2rem;
+          weight: bold;
+        }
+      }
+    }
+    &--btn {
+      @include tablet {
+        padding: 2rem 0;
+        border-radius: $border-radius;
+      }
+    }
+  }
+}

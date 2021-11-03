@@ -1,0 +1,112 @@
+@use "../abstracts/" as *;
+.hero {
+  background-color: $bg-linear;
+  .swiper {
+    height: 100vh;
+    @include tablet {
+      height: unset;
+    }
+    .hero__slide {
+      @include flex(center, center);
+      height: 100%;
+      position: relative;
+      padding: 0 2rem;
+      @include tablet {
+        padding: 12rem 0;
+      }
+      &--title {
+        font: {
+          size: 15rem;
+          weight: 700;
+        }
+        position: absolute;
+        top: 0px;
+        color: $main-color;
+        text-shadow: 0px 4px 12px rgba(245, 71, 73, 0.4);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        @include tablet {
+          font: {
+            size: 13rem;
+          }
+          top: 15%;
+        }
+      }
+      &--img {
+        position: relative;
+        margin-top: 0px;
+        @include tablet {
+          margin-top: 110px;
+        }
+        @include mobile {
+          margin-top: 50px;
+        }
+        .btn {
+          position: absolute;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.5s ease;
+        }
+        .btn-left {
+          left: 100%;
+          bottom: -3rem;
+          @include tablet {
+            left: 80%;
+          }
+        }
+        .btn-right {
+          right: 100%;
+        }
+      }
+    }
+    .swiper-slide {
+      img {
+        transform: scale(0.4);
+        transform-origin: right bottom;
+        transition: trasform 0.6s ease;
+      }
+      &-active,
+      &-duplicate-prev {
+        img {
+          transform: scale(0.4);
+        }
+      }
+      &-active {
+        img {
+          transform-origin: left bottom;
+        }
+      }
+      &.swiper-slide-next {
+        .hero__slide--img {
+          @include flex(center, center);
+        }
+        .hero__slide--title {
+          opacity: 1;
+          @include mobile {
+            font: {
+              size: 9rem;
+            }
+          }
+        }
+        img {
+          transform: scale(1.4);
+          transform-origin: center;
+        }
+        button {
+          opacity: 1;
+          visibility: visible;
+          transition: opacity 0.5s ease, box-shadow 0.3s ease,
+            transform 0.3s ease;
+          z-index: 98;
+        }
+      }
+    }
+    .swiper-pagination-bullet {
+      width: 15px;
+      height: 15px;
+      &.active {
+        background-color: $main-color;
+      }
+    }
+  }
+}

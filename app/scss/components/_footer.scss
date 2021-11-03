@@ -1,0 +1,55 @@
+@use "../abstracts/" as *;
+
+.section__footer {
+  background-image: $bg-linear-reverse;
+  padding-bottom: 0;
+  overflow: hidden;
+  .footer {
+    display: grid;
+    grid: {
+      template: {
+        columns: repeat(2, 1fr);
+      }
+    }
+    position: relative;
+    padding-bottom: 3rem;
+    &__img {
+    }
+    &__menus {
+      padding-left: 2rem;
+      @include flex(flex-start, flex-start);
+      position: relative;
+      & > * ~ * {
+        margin-left: 4rem;
+      }
+      &--col {
+        a {
+          transition: color 0.3s ease;
+        }
+        a:hover {
+          color: $main-color;
+        }
+        width: max-content;
+        font: {
+          size: 1rem;
+          weight: 500;
+        }
+        & > * ~ * {
+          margin-top: 1rem;
+        }
+      }
+
+      img {
+        position: absolute;
+        right: 313px;
+        bottom: 128px;
+        transform: rotate(45deg);
+        width: 400px;
+
+        @include tablet {
+          display: none;
+        }
+      }
+    }
+  }
+}
